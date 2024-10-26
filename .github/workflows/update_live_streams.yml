@@ -24,6 +24,6 @@ jobs:
 
       - name: Run Script
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}  # Store your YouTube API key as a secret
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        # Store your GitHub token as a secret
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}  # Correct secret name
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}   # Correct secret name
         run: python Youtube.py
