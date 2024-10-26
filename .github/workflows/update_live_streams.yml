@@ -2,15 +2,15 @@ name: Update Live Streams
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour at the start of the hour
-  workflow_dispatch:  # Allows manual triggering of the workflow
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:       # Allows manual triggering
 
 jobs:
-  update-live-streams:
+  update_live_streams:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Python
@@ -18,16 +18,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           pip install google-api-python-client PyGithub
 
-      - name: Run Script
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}  # Correct secret name
-          GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}   # Correct secret name
-<<<<<<< HEAD
+      - name: Run the script
         run: python Youtube.py
-=======
-        run: python Youtube.py
->>>>>>> b98763bb74bb14a3c188956054bbe808e067f30a
