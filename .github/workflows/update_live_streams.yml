@@ -23,4 +23,7 @@ jobs:
           pip install google-api-python-client PyGithub
 
       - name: Run the script
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}  # Use GitHub Secrets
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub Secrets
         run: python Youtube.py
