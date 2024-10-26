@@ -37,8 +37,8 @@ def fetch_live_streams(channel_id):
         print(f"An error occurred: {e}")
         return []
 
-# List of channels to track
-channel_ids = ["@adityamusic", "@ETVJabardasth"]  # Add your channel IDs here
+# List of channels to track (replace with actual channel IDs)
+channel_ids = ["@adityamusic", "@ETVJabardasth"]  # Update with actual IDs
 all_streams = {channel_id: fetch_live_streams(channel_id) for channel_id in channel_ids}
 
 # Convert to JSON and push to GitHub
