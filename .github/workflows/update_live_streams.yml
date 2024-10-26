@@ -26,4 +26,8 @@ jobs:
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}  # Correct secret name
           GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}   # Correct secret name
+<<<<<<< HEAD
         run: python Youtube.py
+=======
+        run: python Youtube.py
+>>>>>>> b98763bb74bb14a3c188956054bbe808e067f30a
