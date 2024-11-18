@@ -1,17 +1,29 @@
-export async function onRequest(context) {
-  const { request } = context;
-  const url = new URL(request.url);
-  const pathName = url.pathname;
-  const videoId = url.searchParams.get("video_id");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Live Stream</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    input { padding: 10px; width: 250px; }
+    button { padding: 10px; width: 150px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Enter YouTube Channel ID for Live Stream</h1>
+  <input type="text" id="channelId" placeholder="Enter Channel ID" />
+  <button onclick="redirectToStream()">Go Live</button>
 
-  // Check if the video_id query parameter is provided
-  if (!videoId) {
-    return new Response("Missing 'video_id' query parameter", { status: 400 });
-  }
-
-  // Construct the HLS manifest URL dynamically based on video_id
-  const hlsStreamUrl = `https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1731207174/ei/pcsvZ-XOPPewi9oP_JrliQo/ip/104.28.203.247/id/${videoId}.4/itag/234/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/goi/133/sgoap/gir%3Dyes%3Bitag%3D140/rqh/1/hdlc/1/hls_chunk_host/rr1---sn-q4flrnsk.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/3600/manifest_duration/3600/vprv/1/playlist_type/DVR/met/1731185575,/mh/HX/mip/104.28.237.111/mm/44/mn/sn-q4flrnsk/ms/lva/mv/u/mvi/1/pl/27/rms/lva,lva/dover/13/pacing/0/short_key/1/keepalive/yes/fexp/51312688,51326932/mt/1731184955/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,goi,sgoap,rqh,hdlc,xpc,playlist_duration,manifest_duration,vprv,playlist_type/sig/AJfQdSswRQIgK3iBM8JY-onx4AxCB28gLjDztXpCgHuptpABzcovOYICIQCEOFNBRduKO4hzD9NR0P602SlcHh16Gi03nBOfqSp9Fw%3D%3D/lsparams/hls_chunk_host,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms/lsig/AGluJ3MwRQIgFp_wm_7sjtyizw8E1x3t8eRg1YLsxas0-8BGBHD_R7wCIQCaGcsl6r_XlNN8jxthYmu7nagkgxIwrRnwD2mj1sOMwA%3D%3D/playlist/index.m3u8`;
-
-  // Redirect to the HLS manifest URL
-  return Response.redirect(hlsStreamUrl, 302);
-}
+  <script>
+    function redirectToStream() {
+      const channelId = document.getElementById('channelId').value.trim();
+      if (channelId) {
+        window.location.href = `https://tvtyt.pages.dev/play.m3u8?id=${channelId}`;
+      } else {
+        alert('Please enter a channel ID');
+      }
+    }
+  </script>
+</body>
+</html>
